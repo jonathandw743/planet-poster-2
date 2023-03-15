@@ -1,14 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import Answers from "./Answers";
+import Question from "./Question";
 
-export default function Questions({ questions }: any) {
-	const [question, setQuestion] = useState();
+export default function Questions({ questions, userId }: any) {
+	const [question, setQuestion] = useState({});
 
 	return (
-		<>
-			questions
-
+		<fieldset>
+			<legend>questions</legend>
 			<ul>
 				{questions.map((question: any, i: number) => (
 					<li key={i}>
@@ -22,6 +23,7 @@ export default function Questions({ questions }: any) {
 					</li>
 				))}
 			</ul>
-		</>
+			<Question question={question} userId={userId}/>
+		</fieldset>
 	);
 }

@@ -14,7 +14,7 @@ export default function CreateSession() {
 	async function createSession(e:any) {
 		e.preventDefault();
 
-		const res = await fetch(`http://127.0.0.1:8090/api/collections/sessions/records`, {
+		const res = await fetch("/api/session/create", {
             method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -25,6 +25,8 @@ export default function CreateSession() {
         });
 
 		const data = await res.json();
+
+		console.log(data);
 		
 		setName("");
 		setSessionId(data?.id);
@@ -36,7 +38,7 @@ export default function CreateSession() {
 		<>
 			<h1>create session</h1>
 			<form onSubmit={createSession}>
-				<label htmlFor="name">
+				<label>
 					optional name for session
 					<input
 						type="text"
@@ -51,7 +53,7 @@ export default function CreateSession() {
 			</form>
 			<p>session id: {sessionId ?? "not yet created"}</p>
 			<p>share this id to allow people to join the session</p>
-			<Link href={`/session/${sessionId}`} >link to join session</Link>
+			<Link href={`/joinsession/${sessionId}`} >link to join session</Link>
 		</>
 	);
 }
