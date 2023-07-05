@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Answers from "./Answers";
+import AnswersToQuestions from "./AnswersToQuestions";
 import Question from "./Question";
 
 export default function Questions({ questions, userId }: any) {

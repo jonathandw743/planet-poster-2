@@ -1,3 +1,19 @@
+:root {
+	--bg: #101e3a;
+	--fg: #e6f2fc;
+	--link: #9fccff;
+}
+
+body {
+	font-family: "JetBrains Mono";
+	color: var(--fg);
+	background-color: var(--bg);
+}
+
+a {
+	color: var(--link)
+}
+
 fieldset {
 	width: fit-content;
 }
@@ -5,10 +21,13 @@ fieldset {
 nav > ul {
 	list-style-type: none;
 	margin: 0;
-	padding: 0;
+	padding: 0px;
+	border: 1px solid var(--fg);
 }
 
 nav > ul > li {
-    display: inline;
-    margin: 50px;
+    display: inline-block;
+	margin: 10px;
+	padding: 15px;
+	border: 1px solid var(--fg);
 }

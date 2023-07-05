@@ -1,11 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Link from "next/link";
 
 export default function GenerateLink() {
 	const [sessionId, setSessionId] = useState("");
+	const [joinSessionHref, setJoinSessionHref] = useState("");
+
+	useEffect(() => {
+		setJoinSessionHref(`/joinsession/${sessionId}`);
+	}, [sessionId]);
 	return (
 		<fieldset>
 			<legend>generate link</legend>
@@ -19,7 +24,8 @@ export default function GenerateLink() {
 				}}
 			/>
 			<br />
-			<Link href={`/joinsession/${sessionId}`}>link</Link>
+			{sessionId === "" || <Link href={joinSessionHref}>{joinSessionHref}</Link>}
+
 		</fieldset>
 	);
 }

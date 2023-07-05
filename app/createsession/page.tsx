@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { useRouter as nr } from "next/router";
 import { useEffect, useState } from "react";
 
 export default function CreateSession() {
@@ -9,25 +10,31 @@ export default function CreateSession() {
 
 	const [sessionId, setSessionId] = useState();
 
+	const [joinSessionHref, setJoinSessionHref] = useState("");
+
+	useEffect(() => {
+		setJoinSessionHref(`/joinsession/${sessionId}`);
+	}, [sessionId]);
+
 	const router = useRouter();
 
-	async function createSession(e:any) {
+	async function createSession(e: any) {
 		e.preventDefault();
 
 		const res = await fetch("/api/session/create", {
-            method: "POST",
+			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
 			},
 			body: JSON.stringify({
 				name
 			}),
-        });
+		});
 
 		const data = await res.json();
 
 		console.log(data);
-		
+
 		setName("");
 		setSessionId(data?.id);
 
@@ -51,9 +58,14 @@ export default function CreateSession() {
 				</label>
 				<button>create session</button>
 			</form>
-			<p>session id: {sessionId ?? "not yet created"}</p>
-			<p>share this id to allow people to join the session</p>
-			<Link href={`/joinsession/${sessionId}`} >link to join session</Link>
+			{sessionId === undefined || <>
+				<p>session id: {sessionId}</p>
+				<p>share this id to allow people to join the session</p>
+				<Link href={joinSessionHref} >{joinSessionHref}</Link>
+				<button onClick={() => {
+					navigator.clipboard.writeText(window.location.host + joinSessionHref)
+				}}>copy link</button></>
+			}
 		</>
 	);
 }

@@ -1,10 +1,14 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Question({ question, userId }: any) {
 	const [selectedOption, setSelectedOption] = useState();
+
+	useEffect(() => {
+		setSelectedOption(undefined);
+	}, [question]);
 
 	const router = useRouter();
 
