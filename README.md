@@ -11,14 +11,9 @@ yarn dev
 # or
 pnpm dev
 ```
+This project uses pocketbase for the back end.
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font
-
-This project uses pocketbase for the back end.
 
 To start pocketbase :
 
@@ -30,3 +25,8 @@ To start pocketbase :
 ```
 
 Open the URL(s) displayed. There will be an adim interface route and an API route.
+
+![Creating a session](images/creatingsession.png)
+![Session list](images/sessionlist.png)
+![Joining a session](images/joiningsession.png)
+![Session](images/session.png)
