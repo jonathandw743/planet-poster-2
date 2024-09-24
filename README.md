@@ -26,7 +26,11 @@ To start pocketbase :
 
 Open the URL(s) displayed. There will be an adim interface route and an API route.
 
+## Creating a Session
 ![Creating a session](images/creatingsession.png)
+## Session list
 ![Session list](images/sessionlist.png)
+## Joining a session
 ![Joining a session](images/joiningsession.png)
+## Full session view
 ![Session](images/session.png)
